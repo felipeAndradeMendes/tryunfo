@@ -4,80 +4,80 @@ class Form extends React.Component {
   render() {
     return (
       <>
-        <label htmlFor="nome">
+        <label htmlFor="cardName">
           Nome
           <input
-            name="nome"
-            id="nome"
+            name="cardName"
+            id="cardName"
             type="text"
             data-testid="name-input"
           />
         </label>
 
-        <label htmlFor="descricao">
+        <label htmlFor="cardDescription">
           Descrição
           <input
-            name="descricao"
-            id="descricao"
+            name="cardDescription"
+            id="cardDescription"
             type="textarea"
             data-testid="description-input"
           />
         </label>
 
-        <label htmlFor="attr01">
+        <label htmlFor="cardAttr1">
           Attr01
           <input
-            name="attr01"
-            id="attr01"
+            name="cardAttr1"
+            id="cardAttr1"
             type="number"
             data-testid="attr1-input"
           />
         </label>
 
-        <label htmlFor="attr02">
+        <label htmlFor="cardAttr2">
           Attr02
           <input
-            name="attr02"
-            id="attr02"
+            name="cardAttr2"
+            id="cardAttr2"
             type="number"
             data-testid="attr2-input"
           />
         </label>
 
-        <label htmlFor="attr03">
+        <label htmlFor="cardAttr3">
           Attr03
           <input
-            name="attr03"
-            id="attr03"
+            name="cardAttr3"
+            id="cardAttr3"
             type="number"
             data-testid="attr3-input"
           />
         </label>
 
-        <label htmlFor="imagem">
+        <label htmlFor="cardImage">
           Imagem
           <input
-            name="imagem"
-            id="imagem"
+            name="cardImage"
+            id="cardImage"
             type="text"
             data-testid="image-input"
           />
         </label>
 
-        <label htmlFor="raridade">
+        <label htmlFor="cardRare">
           Raridade
-          <select id="raridade" data-testid="rare-input">
+          <select id="cardRare" data-testid="rare-input">
             <option name="normal">normal</option>
             <option name="raro">raro</option>
             <option name="muitoRaro">muito raro</option>
           </select>
         </label>
 
-        <label htmlFor="superTrunfo">
+        <label htmlFor="cardTrunfo">
           Super Trybe Trunfo
           <input
-            name="superTrunfo"
-            id="superTrunfo"
+            name="cardTrunfo"
+            id="cardTrunfo"
             type="checkbox"
             data-testid="trunfo-input"
           />
