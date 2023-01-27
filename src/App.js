@@ -47,7 +47,7 @@ class App extends React.Component {
           onSaveButtonClick
         />
 
-        <Card 
+        <Card
           cardName
           cardDescription
           cardAttr1
