@@ -58,11 +58,21 @@ class App extends React.Component {
     const verifyInputs = cardName.length === 0
     || cardDescription.length === 0
     || cardImage.length === 0;
-    const verifyNumbers = cardAttr1 < max || cardAttr1 > 0
-    || cardAttr2 < max || cardAttr2 > 0
-    || cardAttr3 < max || cardAttr3 > 0
-    || cardAttr1 + cardAttr2 + cardAttr3 < maxSum;
-    return verifyInputs && verifyNumbers;
+    // console.log(verifyInputs)
+    const verifyCard1 = cardAttr1 > max || cardAttr1 < 0;
+    const verifyCard2 = cardAttr2 > max || cardAttr2 < 0;
+    const verifyCard3 = cardAttr3 > max || cardAttr3 < 0;
+    const verifySum = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) > maxSum;
+
+    console.log('Card1:', verifyCard1);
+    console.log('Card2:', verifyCard2);
+    console.log('Card3:', verifyCard3);
+    console.log('Inputs:', verifyInputs);
+    console.log('Soma:', verifySum);
+
+    // console.log('SOMA', Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3)
+    // console.log('è maior?', cardAttr1 >= 0 && cardAttr1 <= max)
+    return verifyInputs || verifyCard1 || verifyCard2 || verifyCard3 || verifySum;
   };
 
   render() {
