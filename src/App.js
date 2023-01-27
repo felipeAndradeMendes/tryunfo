@@ -14,7 +14,17 @@ class App extends React.Component {
     btnSalvar: false,
   }
   render() {
-
+    const { 
+      cardName, 
+      cardDescription, 
+      cardAttr1, 
+      cardAttr2, 
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      btnSalvar,
+    } = this.state;
 
     return (
       <>
@@ -22,7 +32,18 @@ class App extends React.Component {
           <h1>Tryunfo</h1>
         </div>
         <Form 
-
+          cardName={ '' }
+          cardDescription={ '' }
+          cardAttr1={ '' }
+          cardAttr2={ '' }
+          cardAttr3={ '' }
+          cardImage={ '' }
+          cardRare={ '' }
+          cardTrunfo={ false }
+          hasTrunfo={ false }
+          isSaveButtonDisabled={ false }
+          onInputChange={ '' }
+          onSaveButtonClick={ '' }
         />
       </>
     );
