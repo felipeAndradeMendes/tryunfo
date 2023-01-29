@@ -28,7 +28,6 @@ class App extends React.Component {
   };
 
   cleanInputs = () => {
-   
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -43,7 +42,7 @@ class App extends React.Component {
 
   onSaveButtonClick = () => {
     const {
-      cardName, 
+      cardName,
       cardDescription,
       cardAttr1,
       cardAttr2,
@@ -52,46 +51,19 @@ class App extends React.Component {
       cardRare,
     } = this.state;
     const newCard = {
-      cardName: cardName,
-      cardDescription: cardDescription,
-      cardAttr1: cardAttr1,
-      cardAttr2: cardAttr2,
-      cardAttr3: cardAttr3,
-      cardImage: cardImage,
-      cardRare: cardRare,
-    }
-    this.setState((prevState) => {
-      // const {
-      //   cardName, 
-      //   cardDescription,
-      //   cardAttr1,
-      //   cardAttr2,
-      //   cardAttr3,
-      //   cardImage,
-      //   cardRare,
-      // } = prevState;
-
-      // const prevCard = {
-      //   cardName: cardName,
-      //   cardDescription: cardDescription,
-      //   cardAttr1: cardAttr1,
-      //   cardAttr2: cardAttr2,
-      //   cardAttr3: cardAttr3,
-      //   cardImage: cardImage,
-      //   cardRare: cardRare,
-      // };
-
-      // console.log('PREVCARD:', prevCard)
-      // console.log('NEWCARD:', newCard )
-      return {
-        // newCards: prevCard.newCards
-        //   ? [...prevState.newCards, newCard] 
-        //   : [newCard],
-        newCards: [...prevState.newCards, newCard],
-      }
-    });
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    };
+    this.setState((prevState) => ({
+      newCards: [...prevState.newCards, newCard],
+    }));
     this.cleanInputs();
-  }
+  };
 
   onInputchange = ({ target }) => {
     const { name, value } = target;
@@ -104,7 +76,7 @@ class App extends React.Component {
 
   testInputs = () => {
     const max = 90;
-    const maxSum = 210; 
+    const maxSum = 210;
     const {
       cardName,
       cardDescription,
