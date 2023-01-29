@@ -40,6 +40,15 @@ class App extends React.Component {
     });
   };
 
+  validateSuperTrunfoCheckbox = (trunfoBool) => {
+    // console.log(trunfoBool)
+    const { newCards } = this.state;
+    // console.log(newCards)
+    const result = newCards.some((card) => card.cardTrunfo === true);
+    // console.log('Existe carta trunfo no array?', result)
+    return result
+  };
+
   onSaveButtonClick = () => {
     const {
       cardName,
@@ -63,7 +72,8 @@ class App extends React.Component {
     };
     this.setState((prevState) => ({
       newCards: [...prevState.newCards, newCard],
-    }));
+      }), () => this.validateSuperTrunfoCheckbox(cardTrunfo)
+    );
     this.cleanInputs();
   };
 
@@ -71,7 +81,7 @@ class App extends React.Component {
     const { name, value, type, checked } = target;
     // const resultValue = this.handleSpecialCasesObj[name](value);
     const finalValue = type === "checkbox" ? checked : value;
-    console.log(finalValue)
+    // console.log(finalValue)
     this.setState({
       [name]: finalValue,
     });
@@ -108,9 +118,7 @@ class App extends React.Component {
     return verifyInputs || verifyCard1 || verifyCard2 || verifyCard3 || verifySum;
   };
 
-  validateSuperTrunfoCheckbox = () => {
 
-  };
 
   render() {
     const {
@@ -139,7 +147,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          hasTrunfo
+          hasTrunfo={ this.validateSuperTrunfoCheckbox() }
           isSaveButtonDisabled={ this.testInputs() }
           onInputChange={ this.onInputchange }
           onSaveButtonClick={ this.onSaveButtonClick }
