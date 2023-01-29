@@ -24,8 +24,74 @@ class App extends React.Component {
     cardImage: '',
     cardRare: 'normal',
     cardTrunfo: '',
-    // btnSalvar: false,
+    newCards: [],
   };
+
+  cleanInputs = () => {
+   
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: '',
+    });
+  };
+
+  onSaveButtonClick = () => {
+    const {
+      cardName, 
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+    const newCard = {
+      cardName: cardName,
+      cardDescription: cardDescription,
+      cardAttr1: cardAttr1,
+      cardAttr2: cardAttr2,
+      cardAttr3: cardAttr3,
+      cardImage: cardImage,
+      cardRare: cardRare,
+    }
+    this.setState((prevState) => {
+      // const {
+      //   cardName, 
+      //   cardDescription,
+      //   cardAttr1,
+      //   cardAttr2,
+      //   cardAttr3,
+      //   cardImage,
+      //   cardRare,
+      // } = prevState;
+
+      // const prevCard = {
+      //   cardName: cardName,
+      //   cardDescription: cardDescription,
+      //   cardAttr1: cardAttr1,
+      //   cardAttr2: cardAttr2,
+      //   cardAttr3: cardAttr3,
+      //   cardImage: cardImage,
+      //   cardRare: cardRare,
+      // };
+
+      // console.log('PREVCARD:', prevCard)
+      // console.log('NEWCARD:', newCard )
+      return {
+        // newCards: prevCard.newCards
+        //   ? [...prevState.newCards, newCard] 
+        //   : [newCard],
+        newCards: [...prevState.newCards, newCard],
+      }
+    });
+    this.cleanInputs();
+  }
 
   onInputchange = ({ target }) => {
     const { name, value } = target;
@@ -37,16 +103,8 @@ class App extends React.Component {
   };
 
   testInputs = () => {
-    // console.log('CARD NAME:', cardName.value);
     const max = 90;
-    const maxSum = 210;
-    // if (cardName.value.length === 0) return true;
-    // if (cardDescription.value.length === 0) return true;
-    // if (cardImage.value.length === 0) return true;
-    // if (cardAttr1.value + cardAttr2.value + cardAttr3 > maxSum) return true;
-    // if (cardAttr1.value > max || cardAttr1.value < 0) return true;
-    // if (cardAttr2.value > max || cardAttr1.value < 0) return true;
-    // if (cardAttr3.value > max || cardAttr1.value < 0) return true;
+    const maxSum = 210; 
     const {
       cardName,
       cardDescription,
@@ -64,11 +122,11 @@ class App extends React.Component {
     const verifyCard3 = cardAttr3 > max || cardAttr3 < 0;
     const verifySum = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) > maxSum;
 
-    console.log('Card1:', verifyCard1);
-    console.log('Card2:', verifyCard2);
-    console.log('Card3:', verifyCard3);
-    console.log('Inputs:', verifyInputs);
-    console.log('Soma:', verifySum);
+    // console.log('Card1:', verifyCard1);
+    // console.log('Card2:', verifyCard2);
+    // console.log('Card3:', verifyCard3);
+    // console.log('Inputs:', verifyInputs);
+    // console.log('Soma:', verifySum);
 
     // console.log('SOMA', Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3)
     // console.log('è maior?', cardAttr1 >= 0 && cardAttr1 <= max)
@@ -105,7 +163,7 @@ class App extends React.Component {
           hasTrunfo
           isSaveButtonDisabled={ this.testInputs() }
           onInputChange={ this.onInputchange }
-          onSaveButtonClick
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
 
         <Card
