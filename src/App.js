@@ -40,13 +40,13 @@ class App extends React.Component {
     });
   };
 
-  validateSuperTrunfoCheckbox = (trunfoBool) => {
+  validateSuperTrunfoCheckbox = () => {
     // console.log(trunfoBool)
     const { newCards } = this.state;
     // console.log(newCards)
     const result = newCards.some((card) => card.cardTrunfo === true);
     // console.log('Existe carta trunfo no array?', result)
-    return result
+    return result;
   };
 
   onSaveButtonClick = () => {
@@ -72,15 +72,14 @@ class App extends React.Component {
     };
     this.setState((prevState) => ({
       newCards: [...prevState.newCards, newCard],
-      }), () => this.validateSuperTrunfoCheckbox(cardTrunfo)
-    );
+    }), () => this.validateSuperTrunfoCheckbox(cardTrunfo));
     this.cleanInputs();
   };
 
   onInputchange = ({ target }) => {
     const { name, value, type, checked } = target;
     // const resultValue = this.handleSpecialCasesObj[name](value);
-    const finalValue = type === "checkbox" ? checked : value;
+    const finalValue = type === 'checkbox' ? checked : value;
     // console.log(finalValue)
     this.setState({
       [name]: finalValue,
@@ -117,8 +116,6 @@ class App extends React.Component {
     // console.log('è maior?', cardAttr1 >= 0 && cardAttr1 <= max)
     return verifyInputs || verifyCard1 || verifyCard2 || verifyCard3 || verifySum;
   };
-
-
 
   render() {
     const {
