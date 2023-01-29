@@ -23,7 +23,7 @@ class App extends React.Component {
     cardAttr3: 0,
     cardImage: '',
     cardRare: 'normal',
-    cardTrunfo: '',
+    cardTrunfo: false,
     newCards: [],
   };
 
@@ -36,7 +36,7 @@ class App extends React.Component {
       cardAttr3: 0,
       cardImage: '',
       cardRare: 'normal',
-      cardTrunfo: '',
+      cardTrunfo: false,
     });
   };
 
@@ -49,6 +49,7 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
     } = this.state;
     const newCard = {
       cardName,
@@ -58,6 +59,7 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
     };
     this.setState((prevState) => ({
       newCards: [...prevState.newCards, newCard],
@@ -66,12 +68,13 @@ class App extends React.Component {
   };
 
   onInputchange = ({ target }) => {
-    const { name, value } = target;
+    const { name, value, type, checked } = target;
     // const resultValue = this.handleSpecialCasesObj[name](value);
+    const finalValue = type === "checkbox" ? checked : value;
+    console.log(finalValue)
     this.setState({
-      [name]: value,
+      [name]: finalValue,
     });
-    // this.testInputs();
   };
 
   testInputs = () => {
@@ -103,6 +106,10 @@ class App extends React.Component {
     // console.log('SOMA', Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3)
     // console.log('è maior?', cardAttr1 >= 0 && cardAttr1 <= max)
     return verifyInputs || verifyCard1 || verifyCard2 || verifyCard3 || verifySum;
+  };
+
+  validateSuperTrunfoCheckbox = () => {
+
   };
 
   render() {
