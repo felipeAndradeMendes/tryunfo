@@ -118,6 +118,19 @@ class App extends React.Component {
     return verifyInputs || verifyCard1 || verifyCard2 || verifyCard3 || verifySum;
   };
 
+  handleBtnExcluirClick = ({ target }) => {
+    const { name } = target;
+    const { newCards } = this.state;
+    // console.log('NEW CARDS:', newCards)
+    const newList = newCards.filter((card) => (
+      card.cardName !== name
+    ));
+    // console.log('NEW LIST:', newList)
+    this.setState({
+      newCards: newList,
+    });
+  };
+
   render() {
     const {
       cardName,
@@ -164,19 +177,24 @@ class App extends React.Component {
 
         <div>
           {newCards.map((card) => (
-            <Card
-              key={ card.cardName }
-              cardName={ card.cardName }
-              cardDescription={ card.cardDescription }
-              cardAttr1={ card.cardAttr1 }
-              cardAttr2={ card.cardAttr2 }
-              cardAttr3={ card.cardAttr3 }
-              cardImage={ card.cardImage }
-              cardRare={ card.cardRare }
-              cardTrunfo={ card.cardTrunfo }
-            />
+            <div key={ card.cardName }>
+              <Card
+                cardName={ card.cardName }
+                cardDescription={ card.cardDescription }
+                cardAttr1={ card.cardAttr1 }
+                cardAttr2={ card.cardAttr2 }
+                cardAttr3={ card.cardAttr3 }
+                cardImage={ card.cardImage }
+                cardRare={ card.cardRare }
+                cardTrunfo={ card.cardTrunfo }
+              />
+              <ButtonExcluir
+                name={ card.cardName}
+                excluirCard={ this.handleBtnExcluirClick }
+              />
+            </div>
+
             ))}
-            <ButtonExcluir />
         </div>
       </>
     );
