@@ -167,3 +167,6 @@ Form.propTypes = {
 }.isRequired;
 
 export default Form;
+
+// link que explica o lint de ternario pra react:
+// https://beta.reactjs.org/learn/conditional-rendering

@@ -38,3 +38,6 @@ export default InputTrunfo;
 //   onChange={ onInputChange }
 // />
 // </label>
+
+// link que explica o lint de ternario pra react:
+// https://beta.reactjs.org/learn/conditional-rendering
