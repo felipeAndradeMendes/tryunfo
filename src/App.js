@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import ButtonExcluir from './components/ButtonExcluir';
 
 class App extends React.Component {
   //   handleSpecialCasesObj = {
@@ -174,7 +175,8 @@ class App extends React.Component {
               cardRare={ card.cardRare }
               cardTrunfo={ card.cardTrunfo }
             />
-          ))}
+            ))}
+            <ButtonExcluir />
         </div>
       </>
     );
