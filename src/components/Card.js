@@ -16,7 +16,7 @@ class Card extends React.Component {
     return (
       <>
         <h2 data-testid="name-card">
-          Nome da Carta
+          
           { cardName }
         </h2>
         <img
