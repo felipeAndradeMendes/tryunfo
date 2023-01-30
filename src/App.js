@@ -189,12 +189,12 @@ class App extends React.Component {
                 cardTrunfo={ card.cardTrunfo }
               />
               <ButtonExcluir
-                name={ card.cardName}
+                name={ card.cardName }
                 excluirCard={ this.handleBtnExcluirClick }
               />
             </div>
 
-            ))}
+          ))}
         </div>
       </>
     );
