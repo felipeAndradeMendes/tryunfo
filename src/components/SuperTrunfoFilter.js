@@ -5,11 +5,11 @@ class SuperTrunfoFilter extends React.Component {
     return (
       <label htmlFor="SuperTrunfoFilter">
         Super Trunfo
-        <input 
-        data-testid="trunfo-filter"
-        id="SuperTrunfoFilter"
-        name="SuperTrunfoFilter"
-        type="checkbox"
+        <input
+          data-testid="trunfo-filter"
+          id="SuperTrunfoFilter"
+          name="SuperTrunfoFilter"
+          type="checkbox"
         />
       </label>
     );
