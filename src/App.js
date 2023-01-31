@@ -6,18 +6,6 @@ import InputFilter from './components/InputFilter';
 import RareFilter from './components/RareFilter';
 
 class App extends React.Component {
-  //   handleSpecialCasesObj = {
-  //   cardName: (value) => value,
-  //   cardDescription: (value) => value,
-  //   cardAttr1: (value) => value,
-  //   cardAttr2: (value) => value,
-  //   cardAttr3: (value) => value,
-  //   cardImage: (value) => value,
-  //   cardRare: (value) => value,
-  //   cardTrunfo: (value) => value,
-  //   btnSalvar: (value) => value,
-  // }
-
   state = {
     cardName: '',
     cardDescription: '',
@@ -85,10 +73,6 @@ class App extends React.Component {
     const { name, value, type, checked } = target;
     // const resultValue = this.handleSpecialCasesObj[name](value);
     const finalValue = type === 'checkbox' ? checked : value;
-    // console.log(finalValue)
-    // console.log('VALUEINPUTFILTER:', value)
-    // console.log(name === 'inputFilter' && this.handleInputFilter(value))
-
     this.setState({
       [name]: finalValue,
     }, () => name === 'inputFilter' && this.handleInputFilter(finalValue));
