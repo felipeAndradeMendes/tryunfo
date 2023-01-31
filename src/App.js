@@ -26,6 +26,7 @@ class App extends React.Component {
     cardImage: '',
     cardRare: 'normal',
     cardTrunfo: false,
+    inputFilter: '',
     newCards: [],
   };
 
@@ -83,9 +84,12 @@ class App extends React.Component {
     // const resultValue = this.handleSpecialCasesObj[name](value);
     const finalValue = type === 'checkbox' ? checked : value;
     // console.log(finalValue)
+    console.log('VALUEINPUTFILTER:', value)
+    // console.log(name === 'inputFilter' && this.handleInputFilter(value))
+    
     this.setState({
       [name]: finalValue,
-    });
+    }, name === 'inputFilter' && handleInputFilter(finalValue));
   };
 
   testInputs = () => {
@@ -132,6 +136,19 @@ class App extends React.Component {
     });
   };
 
+  handleInputFilter = (value) => {
+    const { newCards } = this.state;
+    console.log('VALUE RECEBIDO PELA FUNÇÃO:', value)
+    console.log('NEWCARDS:', newCards)
+    const foundCards = newCards.filter((card) =>(
+      card.cardName === value
+    ));
+    console.log('FOUNDCARDS:', foundCards)
+    this.setState({
+      newCards: foundCards,
+    });
+  };
+
   render() {
     const {
       cardName,
@@ -142,6 +159,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      inputFilter,
       newCards,
     } = this.state;
 
@@ -176,7 +194,10 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
         />
 
-        <InputFilter />
+        <InputFilter
+          inputFilter={ inputFilter }
+          onInputChange={ this.onInputchange }
+        />
 
         <div>
           {newCards.map((card) => (
