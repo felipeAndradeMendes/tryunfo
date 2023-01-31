@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import ButtonExcluir from './components/ButtonExcluir';
+import InputFilter from './components/InputFilter';
 
 class App extends React.Component {
   //   handleSpecialCasesObj = {
@@ -174,6 +175,8 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+
+        <InputFilter />
 
         <div>
           {newCards.map((card) => (
