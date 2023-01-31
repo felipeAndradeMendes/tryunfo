@@ -86,7 +86,7 @@ class App extends React.Component {
     // console.log(finalValue)
     // console.log('VALUEINPUTFILTER:', value)
     // console.log(name === 'inputFilter' && this.handleInputFilter(value))
-    
+
     this.setState({
       [name]: finalValue,
     }, () => name === 'inputFilter' && this.handleInputFilter(finalValue));
@@ -140,13 +140,11 @@ class App extends React.Component {
     const { newCards } = this.state;
     // console.log('VALUE RECEBIDO PELA FUNÇÃO:', value)
     // console.log('NEWCARDS:', newCards)
-    const savedCardsList = newCards;
     // console.log('SAVED CARDS LIST', savedCardsList)
-    const foundCards = newCards.filter((card) =>(
+    const foundCards = newCards.filter((card) => (
       card.cardName.match(value)
     ));
-    console.log('FOUNDCARDS:', foundCards)
-    console.log('   ')
+    // console.log('FOUNDCARDS:', foundCards);
     this.setState({
       newCards: foundCards,
     });
