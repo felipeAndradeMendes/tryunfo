@@ -4,6 +4,7 @@ import Card from './components/Card';
 import ButtonExcluir from './components/ButtonExcluir';
 import InputFilter from './components/InputFilter';
 import RareFilter from './components/RareFilter';
+import SuperTrunfoFilter from './components/SuperTrunfoFilter';
 
 class App extends React.Component {
   state = {
@@ -16,7 +17,7 @@ class App extends React.Component {
     cardRare: 'normal',
     cardTrunfo: false,
     inputFilter: '',
-    // rareFilter: 'todas',
+    superTrunfoFilter: false,
     newCards: [],
   };
 
@@ -155,6 +156,10 @@ class App extends React.Component {
     });
   };
 
+  handleSuperTrunfoFilter = () => {
+
+  };
+
   render() {
     const {
       cardName,
@@ -167,6 +172,7 @@ class App extends React.Component {
       cardTrunfo,
       inputFilter,
       rareFilter,
+      superTrunfoFilter,
       newCards,
     } = this.state;
 
@@ -209,6 +215,11 @@ class App extends React.Component {
         <RareFilter
           rareFilter={ rareFilter }
           onInputChange={ this.handleRareFilter }
+          />
+
+        <SuperTrunfoFilter
+          onInputChange={ this.onInputchange }
+          isChecked={ superTrunfoFilter }
         />
 
         <div>
