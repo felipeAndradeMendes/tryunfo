@@ -3,6 +3,7 @@ import Form from './components/Form';
 import Card from './components/Card';
 import ButtonExcluir from './components/ButtonExcluir';
 import InputFilter from './components/InputFilter';
+import RareFilter from './components/RareFilter';
 
 class App extends React.Component {
   //   handleSpecialCasesObj = {
@@ -27,6 +28,7 @@ class App extends React.Component {
     cardRare: 'normal',
     cardTrunfo: false,
     inputFilter: '',
+    // rareFilter: 'todas',
     newCards: [],
   };
 
@@ -150,6 +152,20 @@ class App extends React.Component {
     });
   };
 
+  handleRareFilter = ({ target }) => {
+    const { value } = target;
+    const { newCards } = this.state;
+    console.log('VALUE RARIDADE:', value)
+    console.log('', )
+    const foundRareCards = newCards.filter((rare) => (
+      rare.cardRare === value
+    ));
+    // newCards.cardRare === 'todas' && this.setState({newCards: newCards});
+    this.setState({
+      newCards: foundRareCards,
+    });
+  };
+
   render() {
     const {
       cardName,
@@ -161,6 +177,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       inputFilter,
+      rareFilter,
       newCards,
     } = this.state;
 
@@ -198,6 +215,11 @@ class App extends React.Component {
         <InputFilter
           inputFilter={ inputFilter }
           onInputChange={ this.onInputchange }
+        />
+
+        <RareFilter
+          rareFilter={ rareFilter }
+          onInputChange={ this.handleRareFilter }
         />
 
         <div>
