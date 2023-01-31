@@ -155,12 +155,18 @@ class App extends React.Component {
   handleRareFilter = ({ target }) => {
     const { value } = target;
     const { newCards } = this.state;
-    console.log('VALUE RARIDADE:', value)
-    console.log('', )
-    const foundRareCards = newCards.filter((rare) => (
-      rare.cardRare === value
-    ));
-    // newCards.cardRare === 'todas' && this.setState({newCards: newCards});
+    // console.log('VALUE RARIDADE:', value)
+    // console.log('', )
+
+    // const foundRareCards = newCards.filter((rare) => (
+    //   rare.cardRare === value
+    // ));
+
+    const foundRareCards = value === 'todas' ? (newCards) : (newCards.filter((rare) => {
+      return rare.cardRare === value
+  }));
+    
+    console.log('FOUND RARE CARDS:', foundRareCards);
     this.setState({
       newCards: foundRareCards,
     });

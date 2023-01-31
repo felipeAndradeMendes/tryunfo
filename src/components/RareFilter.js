@@ -12,9 +12,10 @@ class RareFilter extends React.Component {
           value={ rareFilter }
           onChange={ onInputChange }
           name="rareFilter"
-          type="select"
+          type="text"
           // onSelectCapture={ onInputChange }
         >
+          <option>Selecione a raridade</option>
           <option>todas</option>
           <option>normal</option>
           <option>raro</option>
