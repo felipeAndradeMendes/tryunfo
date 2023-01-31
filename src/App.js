@@ -17,7 +17,7 @@ class App extends React.Component {
     cardRare: 'normal',
     cardTrunfo: false,
     inputFilter: '',
-    superTrunfoFilter: false,
+    isDisabled: false,
     newCards: [],
   };
 
@@ -35,11 +35,8 @@ class App extends React.Component {
   };
 
   validateSuperTrunfoCheckbox = () => {
-    // console.log(trunfoBool)
     const { newCards } = this.state;
-    // console.log(newCards)
     const result = newCards.some((card) => card.cardTrunfo === true);
-    // console.log('Existe carta trunfo no array?', result)
     return result;
   };
 
@@ -72,7 +69,6 @@ class App extends React.Component {
 
   onInputchange = ({ target }) => {
     const { name, value, type, checked } = target;
-    // const resultValue = this.handleSpecialCasesObj[name](value);
     const finalValue = type === 'checkbox' ? checked : value;
     this.setState({
       [name]: finalValue,
@@ -140,24 +136,25 @@ class App extends React.Component {
   handleRareFilter = ({ target }) => {
     const { value } = target;
     const { newCards } = this.state;
-    // console.log('VALUE RARIDADE:', value)
-    // console.log('', )
-
-    // const foundRareCards = newCards.filter((rare) => (
-    //   rare.cardRare === value
-    // ));
-
     const foundRareCards = value === 'todas'
       ? (newCards) : (newCards.filter((rare) => rare.cardRare === value));
 
-    console.log('FOUND RARE CARDS:', foundRareCards);
+    // console.log('FOUND RARE CARDS:', foundRareCards);
     this.setState({
       newCards: foundRareCards,
     });
   };
 
-  handleSuperTrunfoFilter = () => {
-
+  handleSuperTrunfoFilter = ({ target }) => {
+    const { checked } = target;
+    const { newCards } = this.state;
+    const foundTrunfos = newCards.filter((card) => (
+      card.cardTrunfo
+    ));
+    this.setState({
+      newCards: foundTrunfos,
+      isDisabled: checked,
+    });
   };
 
   render() {
@@ -172,8 +169,8 @@ class App extends React.Component {
       cardTrunfo,
       inputFilter,
       rareFilter,
-      superTrunfoFilter,
       newCards,
+      isDisabled,
     } = this.state;
 
     return (
@@ -210,16 +207,18 @@ class App extends React.Component {
         <InputFilter
           inputFilter={ inputFilter }
           onInputChange={ this.onInputchange }
+          isDisabled={ isDisabled }
         />
 
         <RareFilter
           rareFilter={ rareFilter }
           onInputChange={ this.handleRareFilter }
-          />
+          isDisabled={ isDisabled }
+        />
 
         <SuperTrunfoFilter
-          onInputChange={ this.onInputchange }
-          isChecked={ superTrunfoFilter }
+          onInputChange={ this.handleSuperTrunfoFilter }
+          // isChecked={ superTrunfoFilter }
         />
 
         <div>

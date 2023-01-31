@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class RareFilter extends React.Component {
   render() {
-    const { rareFilter, onInputChange } = this.props;
+    const { rareFilter, onInputChange, isDisabled } = this.props;
     return (
       <label htmlFor="rareFilter">
         <select
@@ -13,6 +13,7 @@ class RareFilter extends React.Component {
           onChange={ onInputChange }
           name="rareFilter"
           type="text"
+          disabled={ isDisabled }
           // onSelectCapture={ onInputChange }
         >
           <option>Selecione a raridade</option>

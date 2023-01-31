@@ -3,7 +3,7 @@ import Proptypes from 'prop-types';
 
 class InputFilter extends React.Component {
   render() {
-    const { inputFilter, onInputChange } = this.props;
+    const { inputFilter, onInputChange, isDisabled } = this.props;
     return (
       <label htmlFor="inputFilter">
         Filtro de busca
@@ -14,6 +14,7 @@ class InputFilter extends React.Component {
           data-testid="name-filter"
           value={ inputFilter }
           onChange={ onInputChange }
+          disabled={ isDisabled }
         />
       </label>
     );

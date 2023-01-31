@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class SuperTrunfoFilter extends React.Component {
   render() {
-    const { onInputChange, isChecked } = this.props;
+    const { onInputChange } = this.props;
     return (
       <label htmlFor="superTrunfoFilter">
         Super Trunfo
@@ -12,11 +13,15 @@ class SuperTrunfoFilter extends React.Component {
           name="superTrunfoFilter"
           type="checkbox"
           onChange={ onInputChange }
-          checked={ isChecked }
+          defaultChecked={ false }
         />
       </label>
     );
   }
 }
+
+SuperTrunfoFilter.propTypes = {
+  onInputChange: PropTypes.func,
+}.isRequired;
 
 export default SuperTrunfoFilter;
