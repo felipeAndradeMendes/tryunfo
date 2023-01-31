@@ -162,10 +162,9 @@ class App extends React.Component {
     //   rare.cardRare === value
     // ));
 
-    const foundRareCards = value === 'todas' ? (newCards) : (newCards.filter((rare) => {
-      return rare.cardRare === value
-  }));
-    
+    const foundRareCards = value === 'todas'
+      ? (newCards) : (newCards.filter((rare) => rare.cardRare === value));
+
     console.log('FOUND RARE CARDS:', foundRareCards);
     this.setState({
       newCards: foundRareCards,
