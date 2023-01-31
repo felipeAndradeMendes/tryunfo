@@ -84,12 +84,12 @@ class App extends React.Component {
     // const resultValue = this.handleSpecialCasesObj[name](value);
     const finalValue = type === 'checkbox' ? checked : value;
     // console.log(finalValue)
-    console.log('VALUEINPUTFILTER:', value)
+    // console.log('VALUEINPUTFILTER:', value)
     // console.log(name === 'inputFilter' && this.handleInputFilter(value))
     
     this.setState({
       [name]: finalValue,
-    }, name === 'inputFilter' && handleInputFilter(finalValue));
+    }, () => name === 'inputFilter' && this.handleInputFilter(finalValue));
   };
 
   testInputs = () => {
@@ -138,12 +138,15 @@ class App extends React.Component {
 
   handleInputFilter = (value) => {
     const { newCards } = this.state;
-    console.log('VALUE RECEBIDO PELA FUNÇÃO:', value)
-    console.log('NEWCARDS:', newCards)
+    // console.log('VALUE RECEBIDO PELA FUNÇÃO:', value)
+    // console.log('NEWCARDS:', newCards)
+    const savedCardsList = newCards;
+    // console.log('SAVED CARDS LIST', savedCardsList)
     const foundCards = newCards.filter((card) =>(
-      card.cardName === value
+      card.cardName.match(value)
     ));
     console.log('FOUNDCARDS:', foundCards)
+    console.log('   ')
     this.setState({
       newCards: foundCards,
     });
