@@ -19,7 +19,7 @@ class Form extends React.Component {
     } = this.props;
 
     return (
-      <>
+      <fieldset className="form-container">
         <label htmlFor="cardName">
           Nome
           <input
@@ -43,6 +43,8 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
+
+        <hr />
 
         <label htmlFor="cardAttr1">
           Attr01
@@ -91,6 +93,8 @@ class Form extends React.Component {
             onChange={ onInputChange }
           />
         </label>
+
+        <hr />
 
         <label htmlFor="cardRare">
           Raridade
@@ -146,7 +150,7 @@ class Form extends React.Component {
         >
           Salvar
         </button>
-      </>
+      </fieldset>
     );
   }
 }

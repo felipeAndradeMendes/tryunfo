@@ -5,6 +5,7 @@ import ButtonExcluir from './components/ButtonExcluir';
 import InputFilter from './components/InputFilter';
 import RareFilter from './components/RareFilter';
 import SuperTrunfoFilter from './components/SuperTrunfoFilter';
+import './App.css';
 
 class App extends React.Component {
   state = {
@@ -94,13 +95,6 @@ class App extends React.Component {
     const verifyCard2 = cardAttr2 > max || cardAttr2 < 0;
     const verifyCard3 = cardAttr3 > max || cardAttr3 < 0;
     const verifySum = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3) > maxSum;
-
-    // console.log('Card1:', verifyCard1);
-    // console.log('Card2:', verifyCard2);
-    // console.log('Card3:', verifyCard3);
-    // console.log('Inputs:', verifyInputs);
-    // console.log('Soma:', verifySum);
-
     // console.log('SOMA', Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3)
     // console.log('è maior?', cardAttr1 >= 0 && cardAttr1 <= max)
     return verifyInputs || verifyCard1 || verifyCard2 || verifyCard3 || verifySum;
@@ -176,52 +170,55 @@ class App extends React.Component {
     return (
       <>
         <div>
-          <h1>Tryunfo</h1>
+          <h1 className="title">Adicione uma Carta</h1>
         </div>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ this.validateSuperTrunfoCheckbox() }
-          isSaveButtonDisabled={ this.testInputs() }
-          onInputChange={ this.onInputchange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
+        <div className="form-preview-container">
+          <Form
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ this.validateSuperTrunfoCheckbox() }
+            isSaveButtonDisabled={ this.testInputs() }
+            onInputChange={ this.onInputchange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
 
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+          />
+        </div>
+        <div className="input-filter">
+          <InputFilter
+            inputFilter={ inputFilter }
+            onInputChange={ this.onInputchange }
+            isDisabled={ isDisabled }
+          />
 
-        <InputFilter
-          inputFilter={ inputFilter }
-          onInputChange={ this.onInputchange }
-          isDisabled={ isDisabled }
-        />
+          <RareFilter
+            rareFilter={ rareFilter }
+            onInputChange={ this.handleRareFilter }
+            isDisabled={ isDisabled }
+          />
 
-        <RareFilter
-          rareFilter={ rareFilter }
-          onInputChange={ this.handleRareFilter }
-          isDisabled={ isDisabled }
-        />
+          <SuperTrunfoFilter
+            onInputChange={ this.handleSuperTrunfoFilter }
+            // isChecked={ superTrunfoFilter }
+          />
+        </div>
 
-        <SuperTrunfoFilter
-          onInputChange={ this.handleSuperTrunfoFilter }
-          // isChecked={ superTrunfoFilter }
-        />
-
-        <div>
+        <div className="saved-cards">
           {newCards.map((card) => (
             <div key={ card.cardName }>
               <Card

@@ -14,9 +14,8 @@ class Card extends React.Component {
       cardTrunfo,
     } = this.props;
     return (
-      <>
+      <fieldset className="card-preview">
         <h2 data-testid="name-card">
-
           { cardName }
         </h2>
         <img
@@ -28,12 +27,15 @@ class Card extends React.Component {
           { cardDescription }
         </p>
         <p data-testid="attr1-card">
+          Attr01 .....
           { cardAttr1 }
         </p>
         <p data-testid="attr2-card">
+          Attr02 .....
           { cardAttr2 }
         </p>
         <p data-testid="attr3-card">
+          Attr03 .....
           { cardAttr3 }
         </p>
         <h3 data-testid="rare-card">
@@ -46,7 +48,7 @@ class Card extends React.Component {
             : ''
         }
 
-      </>
+      </fieldset>
     );
   }
 }

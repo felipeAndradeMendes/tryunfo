@@ -1,0 +1,47 @@
+.title {
+  text-align: center;
+}
+
+.form-preview-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.form-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  row-gap: 20px;
+  width: 35%;
+}
+
+.card-preview {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+}
+
+.input-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 40px;
+}
+
+.saved-cards {
+  align-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.saved-cards .card-preview {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 90%;
+}
